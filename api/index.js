@@ -59,7 +59,7 @@ app.get("/messages/:userId", async (req, res) => {
 
   try {
     const messages = await Message.find({
-      $or: [
+      $and: [
         { sender: ourUserId, reciever: userId },
         { sender: userId, reciever: ourUserId },
       ],
